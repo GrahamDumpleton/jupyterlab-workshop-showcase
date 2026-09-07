@@ -1,0 +1,32 @@
+#!/bin/bash
+# Configure the Binder image so JupyterLab starts in the workshop browser
+# with the showcase workshops listed as installed and ready to open, and
+# trusts them without asking, since the visitor is the one who chose the
+# link. A launch link naming a workshop still opens that workshop
+# directly. The disabled features keep visitors to the supplied
+# workshops: no other directories or URLs, no subscribing to collections
+# or catalogs, and no removing; Restart puts a workshop back as it
+# started. Author mode is left on because the last workshop shows it.
+set -euo pipefail
+
+settings="${NB_PYTHON_PREFIX}/share/jupyter/lab/settings"
+
+mkdir -p "$settings"
+
+cat > "$settings/overrides.json" <<'JSON'
+{
+  "@jupyterlab-workshop/labextension:panel": {
+    "defaultWorkshop": "",
+    "browseOnStart": true,
+    "workshopsDirectory": "workshops",
+    "trustPolicy": { "forcedLevel": "trusted" },
+    "disabledFeatures": [
+      "open-directory",
+      "open-url",
+      "collections",
+      "catalogs",
+      "remove"
+    ]
+  }
+}
+JSON

@@ -1,0 +1,9 @@
+# Image for mybinder.org: JupyterLab with the released extension on the
+# Python named in runtime.txt (the package needs 3.12 or later). The
+# workshops are opened straight from the checkout, so nothing else is
+# installed. The extension is pinned because mybinder caches the image
+# it builds for a commit and would otherwise keep whatever PyPI had at
+# the first launch; the CI workflow installs from this file too, so the
+# two always test the same release.
+jupyterlab>=4.6,<5
+jupyterlab-workshop==0.1.10

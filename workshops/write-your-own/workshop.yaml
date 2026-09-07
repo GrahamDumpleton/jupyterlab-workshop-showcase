@@ -1,0 +1,41 @@
+apiVersion: jupyterlab-workshop/v1alpha1
+name: write-your-own
+title: Write your own
+version: 0.1.0
+description: Scaffold, write, lint and share a workshop of your own with the jupyter workshop command, ending with a collection index the workshop browser can read.
+finish: |
+  A workshop is a directory of text files. Put it in a repository with a
+  `collection.json`, as this showcase does, and anyone can subscribe to
+  it from the workshop browser.
+authors: [Graham Dumpleton]
+tags: [showcase, authoring, cli]
+duration: 20m
+platforms: [linux, macos, windows]
+capabilities:
+  - terminal
+  - write-files: [workspace]
+  - kernel-exec
+requires:
+  tools:
+    - { name: jupyter, hint: { default: "pip install jupyterlab-workshop" } }
+    - { name: node, optional: true, hint: { default: "Install Node.js 18 or newer; jupyter workshop lint needs it" } }
+layout: default
+gating: soft
+layouts:
+  default:
+    main:
+      - { area: bottom, widgets: ["terminal:author"] }
+variables:
+  - name: workshop_dir
+    type: path
+    default: my-workshop
+    description: Directory the new workshop is scaffolded into
+  - name: repo_url
+    type: url
+    description: The repository the new workshop will be published in
+pages:
+  - pages/01-what-a-workshop-is.md
+  - pages/02-scaffold.md
+  - pages/03-write-a-page.md
+  - pages/04-lint.md
+  - pages/05-share-it.md

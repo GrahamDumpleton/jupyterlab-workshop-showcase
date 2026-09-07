@@ -1,0 +1,15 @@
+# Runtime state the extension writes into each workshop
+workshops/*/_workshop/
+
+# What the workshops create while they run
+workshops/why-a-workshop/notebook-way.ipynb
+workshops/why-a-workshop/project/
+workshops/guided-not-documented/notes/
+workshops/write-your-own/my-workshop/
+
+# Jupyter and OS leftovers
+.ipynb_checkpoints/
+.DS_Store
+
+# A virtual environment made as the README suggests
+.venv/

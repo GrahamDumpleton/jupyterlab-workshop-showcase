@@ -1,0 +1,117 @@
+{
+  "version": 1,
+  "title": "jupyterlab-workshop showcase",
+  "description": "Three short workshops that show what jupyterlab-workshop does and why you would use it rather than a notebook with instructions in it: why a workshop, checks and gating, and writing your own.",
+  "homepage": "https://github.com/GrahamDumpleton/jupyterlab-workshop-showcase",
+  "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJqdXB5dGVybGFiLXdvcmtzaG9wIHNob3djYXNlIj4KICA8cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHJ4PSIxMiIgZmlsbD0iIzFmNmZlYiIvPgogIDxyZWN0IHg9IjEwIiB5PSIxNCIgd2lkdGg9IjE4IiBoZWlnaHQ9IjM2IiByeD0iMyIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iMC45MiIvPgogIDxyZWN0IHg9IjEzIiB5PSIxOSIgd2lkdGg9IjEyIiBoZWlnaHQ9IjIuNSIgcng9IjEuMjUiIGZpbGw9IiMxZjZmZWIiLz4KICA8cmVjdCB4PSIxMyIgeT0iMjUiIHdpZHRoPSIxMiIgaGVpZ2h0PSIyLjUiIHJ4PSIxLjI1IiBmaWxsPSIjMWY2ZmViIi8+CiAgPHJlY3QgeD0iMTMiIHk9IjMxIiB3aWR0aD0iOCIgaGVpZ2h0PSIyLjUiIHJ4PSIxLjI1IiBmaWxsPSIjMWY2ZmViIi8+CiAgPHJlY3QgeD0iMzIiIHk9IjE0IiB3aWR0aD0iMjIiIGhlaWdodD0iMzYiIHJ4PSIzIiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIwLjM1Ii8+CiAgPHBhdGggZD0iTTM5IDI2djEybDExLTZ6IiBmaWxsPSIjZmZmIi8+Cjwvc3ZnPgo=",
+  "publisher": {
+    "name": "Graham Dumpleton",
+    "url": "https://github.com/GrahamDumpleton"
+  },
+  "tags": [
+    "showcase"
+  ],
+  "workshops": [
+    {
+      "name": "why-a-workshop",
+      "title": "Why a workshop?",
+      "description": "Do one small task from a notebook of instructions, then do it again as a workshop, and see what the panel can do that the notebook cannot.",
+      "tags": [
+        "showcase",
+        "introduction"
+      ],
+      "platforms": [
+        "linux",
+        "macos",
+        "windows"
+      ],
+      "capabilities": [
+        "terminal",
+        "write-files:workspace"
+      ],
+      "duration": "10m",
+      "authors": [
+        "Graham Dumpleton"
+      ],
+      "versions": [
+        {
+          "version": "0.1.0",
+          "source": {
+            "git": "https://github.com/GrahamDumpleton/jupyterlab-workshop-showcase",
+            "ref": "main",
+            "subdir": "workshops/why-a-workshop"
+          }
+        }
+      ]
+    },
+    {
+      "name": "guided-not-documented",
+      "title": "Guided, not just documented",
+      "description": "Instructions that check your work. Do three small tasks by hand and watch the workshop notice, hold the next page until each is done, and put things back when they go wrong.",
+      "tags": [
+        "showcase",
+        "checks",
+        "gating"
+      ],
+      "platforms": [
+        "linux",
+        "macos",
+        "windows"
+      ],
+      "capabilities": [
+        "terminal",
+        "write-files:workspace",
+        "kernel-exec",
+        "auto-run"
+      ],
+      "duration": "15m",
+      "authors": [
+        "Graham Dumpleton"
+      ],
+      "versions": [
+        {
+          "version": "0.1.0",
+          "source": {
+            "git": "https://github.com/GrahamDumpleton/jupyterlab-workshop-showcase",
+            "ref": "main",
+            "subdir": "workshops/guided-not-documented"
+          }
+        }
+      ]
+    },
+    {
+      "name": "write-your-own",
+      "title": "Write your own",
+      "description": "Scaffold, write, lint and share a workshop of your own with the jupyter workshop command, ending with a collection index the workshop browser can read.",
+      "tags": [
+        "showcase",
+        "authoring",
+        "cli"
+      ],
+      "platforms": [
+        "linux",
+        "macos",
+        "windows"
+      ],
+      "capabilities": [
+        "terminal",
+        "write-files:workspace",
+        "kernel-exec"
+      ],
+      "duration": "20m",
+      "authors": [
+        "Graham Dumpleton"
+      ],
+      "versions": [
+        {
+          "version": "0.1.0",
+          "source": {
+            "git": "https://github.com/GrahamDumpleton/jupyterlab-workshop-showcase",
+            "ref": "main",
+            "subdir": "workshops/write-your-own"
+          }
+        }
+      ]
+    }
+  ]
+}

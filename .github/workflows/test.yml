@@ -1,0 +1,49 @@
+name: test
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install the release Binder uses, plus the self-test extra
+        shell: bash
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r binder/requirements.txt
+          python -m pip install "jupyterlab-workshop[test]"
+          python -m playwright install --with-deps chromium
+      - name: Lint the index and every workshop
+        shell: bash
+        run: |
+          jupyter workshop lint collection.json
+          for workshop in workshops/*/; do
+            jupyter workshop lint "$workshop"
+            jupyter workshop lint "$workshop" --platform windows
+          done
+      - name: Self-test every workshop
+        shell: bash
+        run: |
+          for workshop in workshops/*/; do
+            name=$(basename "$workshop")
+            jupyter workshop test "$workshop" --junit "results-$name.xml"
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: results-${{ matrix.os }}
+          path: results-*.xml
