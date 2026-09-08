@@ -48,9 +48,11 @@ The badge above starts a JupyterLab on [mybinder.org](https://mybinder.org)
 with the three workshops listed in the workshop browser, ready to open.
 Nothing is downloaded and no trust dialog is shown, because the
 `binder/postBuild` script installs a settings override that marks the
-checkout's workshops as trusted and subscribes to the checkout's own
-`collection.json`, which lists them in order. A link can open one
-workshop directly by naming its directory in the checkout:
+checkout's workshops as trusted, turns off editing, and subscribes to
+the checkout's own `collection.json`, which declares them a sequence, so
+the cards are numbered and the Finish dialog of each offers the next. A
+link can open one workshop directly by naming its directory in the
+checkout:
 
 ```
 https://mybinder.org/v2/gh/GrahamDumpleton/jupyterlab-workshop-showcase/main?urlpath=lab%3Fworkshop%3Dworkshops%2Fwhy-a-workshop

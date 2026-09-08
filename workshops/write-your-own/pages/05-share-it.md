@@ -64,13 +64,17 @@ every push. Copy it.
 
 ## Editing inside JupyterLab
 
-Everything above was done from the terminal. The panel can do the same:
-"Workshop: Author Mode" in the command palette adds a toolbar with
-buttons to edit the page source, add and reorder pages, insert an action
-from a form, capture what you just ran into the page, run the page's
-actions and checks, show lint findings with one-click fixes, preview the
-trust dialog and publish. Saving a page re-renders the panel. The Record
-button turns a session into draft pages, one action per step.
+Everything above was done from the terminal. Where author mode is
+enabled, and it is turned off in shared images such as this one on
+Binder, the panel can do the same: "Workshop: Author Mode" in the
+command palette adds a toolbar with buttons to edit the page source, add
+and reorder pages, insert an action from a form, capture what you just
+ran into the page, run the page's actions and checks, show lint findings
+with one-click fixes, preview the trust dialog and publish. Saving a page
+re-renders the panel. The Record button turns a session into draft
+pages, one action per step. The
+[authoring guide](https://jupyterlab-workshop.readthedocs.io/en/latest/authoring.html)
+covers it.
 
 AI agents can write workshops too: `jupyter workshop mcp` serves the
 same tools over MCP, and the `workshop-author` skill that ships with the

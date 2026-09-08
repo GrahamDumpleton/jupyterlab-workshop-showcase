@@ -5,10 +5,9 @@
 # link. A launch link naming a workshop still opens that workshop
 # directly. The disabled features keep visitors to the supplied
 # workshops: no other directories or URLs, no subscribing to collections
-# or catalogs, and no removing; Restart puts a workshop back as it
-# started. Author mode is left on because the last workshop shows it.
-# Subscribing to the checkout's own collection.json puts the workshops
-# in the collection's order and shows its title and icon.
+# or catalogs, no removing and no editing; Restart puts a workshop back
+# as it started. Subscribing to the checkout's own collection.json lists
+# the workshops in the collection's order, numbered, under its title.
 set -euo pipefail
 
 settings="${NB_PYTHON_PREFIX}/share/jupyter/lab/settings"
@@ -28,7 +27,8 @@ cat > "$settings/overrides.json" <<'JSON'
       "open-url",
       "collections",
       "catalogs",
-      "remove"
+      "remove",
+      "author"
     ]
   }
 }
