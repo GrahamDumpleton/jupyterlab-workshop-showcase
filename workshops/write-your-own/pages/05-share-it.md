@@ -77,7 +77,7 @@ pages, one action per step. The
 covers it.
 
 AI agents can write workshops too: `jupyter workshop mcp` serves the
-same tools over MCP, and the `workshop-author` skill that ships with the
+same tools over MCP, and the `jupyterlab-workshop-authoring` skill that ships with the
 extension explains the format to them.
 
 ```{quiz}
