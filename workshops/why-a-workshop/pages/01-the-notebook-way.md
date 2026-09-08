@@ -10,7 +10,10 @@ in a terminal or the file browser, described in words. This workshop
 starts there, so that the difference is something you feel rather than
 something you are told.
 
-Open the notebook. It holds a small task written the usual way.
+Click the block below to create the notebook and open it. It holds a
+small task written the usual way. Blocks like that one are the
+workshop's actions; this is the only one on this page, and the
+notebook's own instructions take over from there.
 
 ```{notebook-create}
 :path: notebook-way.ipynb
