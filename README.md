@@ -48,8 +48,9 @@ The badge above starts a JupyterLab on [mybinder.org](https://mybinder.org)
 with the three workshops listed in the workshop browser, ready to open.
 Nothing is downloaded and no trust dialog is shown, because the
 `binder/postBuild` script installs a settings override that marks the
-checkout's workshops as trusted. A link can open one workshop directly
-by naming its directory in the checkout:
+checkout's workshops as trusted and subscribes to the checkout's own
+`collection.json`, which lists them in order. A link can open one
+workshop directly by naming its directory in the checkout:
 
 ```
 https://mybinder.org/v2/gh/GrahamDumpleton/jupyterlab-workshop-showcase/main?urlpath=lab%3Fworkshop%3Dworkshops%2Fwhy-a-workshop
@@ -69,15 +70,18 @@ extension looks in by default:
 ```
 git clone https://github.com/GrahamDumpleton/jupyterlab-workshop-showcase
 cd jupyterlab-workshop-showcase
-python -m venv .venv && source .venv/bin/activate
+python3 -m venv .venv && source .venv/bin/activate
 pip install -r binder/requirements.txt
 jupyter lab
 ```
 
 Open "Browse Workshops" from the launcher, or go straight to one with
-`http://localhost:8888/lab?workshop=workshops/why-a-workshop`. Outside
-Binder the trust dialog appears when a workshop opens; it lists what the
-workshop's pages are allowed to do.
+`http://localhost:8888/lab?workshop=workshops/why-a-workshop`. Opening
+`http://localhost:8888/lab?collection=collection.json` instead adds the
+collection for the session, so the browser lists the workshops in the
+collection's order under its title. Outside Binder the trust dialog
+appears when a workshop opens; it lists what the workshop's pages are
+allowed to do.
 
 ## Subscribe from your own JupyterLab
 

@@ -7,6 +7,8 @@
 # workshops: no other directories or URLs, no subscribing to collections
 # or catalogs, and no removing; Restart puts a workshop back as it
 # started. Author mode is left on because the last workshop shows it.
+# Subscribing to the checkout's own collection.json puts the workshops
+# in the collection's order and shows its title and icon.
 set -euo pipefail
 
 settings="${NB_PYTHON_PREFIX}/share/jupyter/lab/settings"
@@ -19,6 +21,7 @@ cat > "$settings/overrides.json" <<'JSON'
     "defaultWorkshop": "",
     "browseOnStart": true,
     "workshopsDirectory": "workshops",
+    "collections": ["collection.json"],
     "trustPolicy": { "forcedLevel": "trusted" },
     "disabledFeatures": [
       "open-directory",
