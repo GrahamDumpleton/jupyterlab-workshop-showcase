@@ -15,9 +15,9 @@ runs, and this collection's does.
 :title: Running the self-test
 It needs the `test` extra, which installs Playwright, and a browser for
 it: `pip install "jupyterlab-workshop[test]"` and then
-`playwright install chromium`. Run
-`jupyter workshop test {{ workshop_dir }}` from a terminal outside
-JupyterLab, since it starts a second one.
+`playwright install chromium`. Run `jupyter workshop test` on the new
+directory from a terminal outside JupyterLab, since it starts a second
+one.
 ```
 
 A workshop reaches learners through a collection: a `collection.json`

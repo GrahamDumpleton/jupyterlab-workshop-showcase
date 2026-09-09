@@ -43,7 +43,9 @@
             "subdir": "workshops/why-a-workshop"
           }
         }
-      ]
+      ],
+      "homepage": "https://github.com/GrahamDumpleton/jupyterlab-workshop-showcase",
+      "issues": "https://github.com/GrahamDumpleton/jupyterlab-workshop-showcase/issues"
     },
     {
       "name": "guided-not-documented",
@@ -78,7 +80,9 @@
             "subdir": "workshops/guided-not-documented"
           }
         }
-      ]
+      ],
+      "homepage": "https://github.com/GrahamDumpleton/jupyterlab-workshop-showcase",
+      "issues": "https://github.com/GrahamDumpleton/jupyterlab-workshop-showcase/issues"
     },
     {
       "name": "write-your-own",
@@ -112,7 +116,9 @@
             "subdir": "workshops/write-your-own"
           }
         }
-      ]
+      ],
+      "homepage": "https://github.com/GrahamDumpleton/jupyterlab-workshop-showcase",
+      "issues": "https://github.com/GrahamDumpleton/jupyterlab-workshop-showcase/issues"
     }
   ]
 }

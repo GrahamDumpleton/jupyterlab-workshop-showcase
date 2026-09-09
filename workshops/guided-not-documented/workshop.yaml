@@ -8,6 +8,8 @@ finish: |
   a document and a guide. **Write your own** shows how little it takes
   to put them in a workshop of yours.
 authors: [Graham Dumpleton]
+homepage: https://github.com/GrahamDumpleton/jupyterlab-workshop-showcase
+issues: https://github.com/GrahamDumpleton/jupyterlab-workshop-showcase/issues
 tags: [showcase, checks, gating]
 duration: 15m
 platforms: [linux, macos, windows]

@@ -11,11 +11,12 @@ now, before doing anything, and read what it says.
 
 Then do the task, in whatever way you like: the terminal below, New
 Folder and New File in the file browser, or the editor. Make a
-directory called `notes` in the workshop directory, and inside it a
+directory called `notes` in the working directory, and inside it a
 file called `today.md` that mentions the word "workshop".
 
-The workshop directory is the one holding this workshop's
-`workshop.yaml`. The terminal starts in it; this prints where that is.
+The working directory is `work`, inside the directory holding this
+workshop's `workshop.yaml`; everything you make in the workshop goes
+there. The terminal starts in it; this prints where that is.
 
 ```{execute}
 :session: workshop

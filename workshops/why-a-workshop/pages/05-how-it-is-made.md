@@ -11,7 +11,7 @@ the commands as its body, and the check under it is a block named
 `verify` with one line saying what to look for.
 
 ```{file-open}
-:path: pages/02-the-workshop-way.md
+:path: ../pages/02-the-workshop-way.md
 ```
 
 The manifest declares the title, the pages in order, the variables, the
@@ -20,7 +20,7 @@ do, which is what the trust dialog shows when a workshop opens. Nothing
 a page does goes beyond that list.
 
 ```{file-open}
-:path: workshop.yaml
+:path: ../workshop.yaml
 ```
 
 The format is plain text, so workshops live in git, are reviewed as

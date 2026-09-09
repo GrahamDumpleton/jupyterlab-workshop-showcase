@@ -8,6 +8,8 @@ finish: |
   further into checks, gating and checkpoints, and **Write your own**
   shows how little it takes to make one.
 authors: [Graham Dumpleton]
+homepage: https://github.com/GrahamDumpleton/jupyterlab-workshop-showcase
+issues: https://github.com/GrahamDumpleton/jupyterlab-workshop-showcase/issues
 tags: [showcase, introduction]
 duration: 10m
 platforms: [linux, macos, windows]

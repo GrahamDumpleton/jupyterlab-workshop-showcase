@@ -28,7 +28,7 @@ missing notes/today.md
 ```
 
 Now restore the checkpoint the previous page took. Everything in the
-workshop directory goes back to how it was at that moment, and so do
+working directory goes back to how it was at that moment, and so do
 the variables.
 
 ```{restore}
@@ -45,8 +45,8 @@ exists notes/today.md
 exists notes/{{ project_name }}.md
 ```
 
-Restart, in the workshop browser, does the same with a checkpoint the
-extension takes on its own when a workshop is first opened, so a
+Restart, in the workshop browser, goes further: it empties the working
+directory and fills it again from the files the workshop ships, so a
 learner can always get back to a clean start without help.
 
 One question to finish.

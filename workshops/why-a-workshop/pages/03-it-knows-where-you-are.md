@@ -37,6 +37,7 @@ echo "Hello, $env:LEARNER"
 
 Progress and answers are kept in the workshop's own directory, under
 `_workshop`, so closing the browser tab and coming back later resumes
-where you left off. Restart, in the workshop browser, forgets it all
-and puts the files back as they were when the workshop was first
-opened.
+where you left off. Everything you make lives in the working directory
+beside it, `work`. Restart, in the workshop browser, forgets it all and
+empties that directory, so the files are as they were when the workshop
+was first opened.

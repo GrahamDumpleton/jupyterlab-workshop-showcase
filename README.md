@@ -120,8 +120,10 @@ binder/
   test.yml               lints and self-tests every workshop on every push
 ```
 
-Each workshop is self-contained and can be copied out on its own. The
-index lists them in the order they are shown, each entry pointing at
+Each workshop is self-contained and can be copied out on its own. When
+one runs, everything the learner makes goes into a `work` directory
+inside it, which Restart empties again; it and the `_workshop` state
+directory are ignored by git. The index lists them in the order they are shown, each entry pointing at
 its directory in this repository at the `main` branch, and was written
 by `jupyter workshop index`. To refresh it after editing a manifest, run
 from the checkout:

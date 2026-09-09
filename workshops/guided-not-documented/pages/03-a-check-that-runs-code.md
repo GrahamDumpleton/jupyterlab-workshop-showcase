@@ -7,7 +7,7 @@ requires: [verify:titled]
 
 File predicates cover a lot, but some checks have to compute. A check
 can be Python, run in a kernel the workshop keeps for itself, in the
-workshop directory. A failing assertion's message is what the learner
+working directory. A failing assertion's message is what the learner
 sees, so the check can say exactly what is missing rather than just
 "no".
 
@@ -52,7 +52,7 @@ for note in notes:
 print(f"{len(notes)} titled note(s): " + ", ".join(n.name for n in notes))
 ```
 
-When the check passes it saves a checkpoint of the workshop directory,
+When the check passes it saves a checkpoint of the working directory,
 files and variables together, so that the next page can break things
 with a clear conscience.
 

@@ -8,6 +8,8 @@ finish: |
   `collection.json`, as this showcase does, and anyone can subscribe to
   it from the workshop browser.
 authors: [Graham Dumpleton]
+homepage: https://github.com/GrahamDumpleton/jupyterlab-workshop-showcase
+issues: https://github.com/GrahamDumpleton/jupyterlab-workshop-showcase/issues
 tags: [showcase, authoring, cli]
 duration: 20m
 platforms: [linux, macos, windows]
