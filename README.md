@@ -2,6 +2,10 @@
 
 [![Launch on Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/GrahamDumpleton/jupyterlab-workshop-showcase/main?urlpath=lab)
 
+Nothing to install: [start the workshops on mybinder.org](https://mybinder.org/v2/gh/GrahamDumpleton/jupyterlab-workshop-showcase/main?urlpath=lab)
+in your browser (see [Launch on Binder](#launch-on-binder) below), or
+[run them locally](#run-locally).
+
 Three short workshops that show what
 [jupyterlab-workshop](https://github.com/GrahamDumpleton/jupyterlab-workshop)
 does, and why you would use it rather than a notebook with the
@@ -44,46 +48,69 @@ Take them in order; each is ten to twenty minutes.
 
 ## Launch on Binder
 
-The badge above starts a JupyterLab on [mybinder.org](https://mybinder.org)
-with the three workshops listed in the workshop browser, ready to open.
-Nothing is downloaded and no trust dialog is shown, because the
-`binder/postBuild` script installs a settings override that marks the
-checkout's workshops as trusted, turns off editing, and subscribes to
-the checkout's own `collection.json`, which declares them a sequence, so
-the cards are numbered and the Finish dialog of each offers the next. A
-link can open one workshop directly by naming its directory in the
-checkout:
+[mybinder.org](https://mybinder.org) is a free public service that
+builds this repository into a temporary JupyterLab and runs it for you
+in the browser, so there is nothing to install. To start, click this
+link:
+
+**[Launch the workshops on Binder](https://mybinder.org/v2/gh/GrahamDumpleton/jupyterlab-workshop-showcase/main?urlpath=lab)**
+
+The badge at the top of this page opens the same link. Building and
+starting the session takes a minute or two. When JupyterLab appears,
+the three workshops are listed in its workshop browser, numbered in
+the order to take them, and the Finish dialog of each offers the next.
+Opening a workshop locally shows a dialog asking you to trust it, since
+its actions run commands on your machine. On Binder that dialog is
+removed: the session is a container of its own, created for you and
+discarded when you are done, and at no time is anything done on your
+machine. The `binder/postBuild` script installs a settings override
+that marks the checkout's workshops as trusted, turns off editing,
+subscribes to the checkout's own `collection.json`, and names
+`binder/welcome.md` as the message shown when the session starts,
+which says what the workshops are and how to end the session.
+
+A link can open one workshop directly, by naming its directory in the
+checkout in the `urlpath`, URL-encoded: this one opens the first
+workshop, with `lab?workshop=workshops/why-a-workshop` as the path:
 
 ```
 https://mybinder.org/v2/gh/GrahamDumpleton/jupyterlab-workshop-showcase/main?urlpath=lab%3Fworkshop%3Dworkshops%2Fwhy-a-workshop
 ```
 
-The `urlpath` is `lab?workshop=workshops/why-a-workshop`, URL-encoded.
 Binder sessions are temporary: anything you do in one is gone when it
-ends.
+ends, so finish a workshop in the session you started it in. When you
+are done with the session, whether you finished a workshop or not,
+shut it down rather than closing the browser tab, so the resources go
+back to Binder for other users. The Finish dialog at the end of a
+workshop has a button for this, and so does JupyterLab's File menu,
+under "Shut Down".
 
 ## Run locally
 
-Install JupyterLab and the extension into a virtual environment, start
-JupyterLab from the checkout, and the workshops appear under Installed in
-the workshop browser, because they sit in the `workshops` directory the
-extension looks in by default:
+You need Python 3.12 or later. Clone the repository, install JupyterLab
+and the extension into a virtual environment from the requirements file
+Binder uses, and start JupyterLab from the checkout with the config
+file:
 
 ```
 git clone https://github.com/GrahamDumpleton/jupyterlab-workshop-showcase
 cd jupyterlab-workshop-showcase
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r binder/requirements.txt
-jupyter lab
+jupyter lab --config=jupyter_lab_config.py
 ```
 
-Open "Browse Workshops" from the launcher, or go straight to one with
-`http://localhost:8888/lab?workshop=workshops/why-a-workshop`. Opening
-`http://localhost:8888/lab?collection=collection.json` instead adds the
-collection for the session, so the browser lists the workshops in the
-collection's order under its title. Outside Binder the trust dialog
-appears when a workshop opens; it lists what the workshop's pages are
-allowed to do.
+The workshops appear under Installed in the workshop browser, because
+they sit in the `workshops` directory the extension looks in by default.
+The config file opens JupyterLab at
+`http://localhost:8888/lab?collection=collection.json`, which adds the
+collection for the session, so the browser lists the workshops numbered
+in the order to take them, under the collection's title; without it
+they are listed in directory order. From the browser, open a workshop,
+or go straight to one with
+`http://localhost:8888/lab?workshop=workshops/why-a-workshop`. Outside
+Binder the trust dialog appears when a workshop opens; it lists what
+the workshop's pages are allowed to do.
 
 ## Subscribe from your own JupyterLab
 
@@ -116,6 +143,9 @@ binder/
   requirements.txt       JupyterLab and the extension, pinned to a release
   runtime.txt            the Python version for the Binder image
   postBuild              writes the settings override described above
+  welcome.md             the message shown when a Binder session starts
+jupyter_lab_config.py    opens a local JupyterLab on the collection, so the workshops
+                         are listed in order; pass it with `--config`
 .github/workflows/
   test.yml               lints and self-tests every workshop on every push
 ```
