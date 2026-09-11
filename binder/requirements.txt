@@ -6,4 +6,4 @@
 # the first launch; the CI workflow installs from this file too, so the
 # two always test the same release.
 jupyterlab>=4.6,<5
-jupyterlab-workshop==0.1.24
+jupyterlab-workshop==0.1.26
