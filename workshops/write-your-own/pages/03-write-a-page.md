@@ -36,8 +36,7 @@ exists hello.txt
 ```
 ````
 
-The outer block uses four backticks because the page it writes contains
-three-backtick blocks of its own. Three things to notice in that page:
+Three things to notice in that page:
 
 - The `requires` line in the front matter names the check, so the page
   is not done until the check passes.
