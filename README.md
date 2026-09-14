@@ -115,11 +115,25 @@ on port 8888 is available: click Open in Browser to open JupyterLab in
 a new tab. If the notification has gone, open the address of the port
 labelled JupyterLab from VS Code's Ports panel. The tab is not opened
 by itself, because browsers block a tab nobody clicked for. From there
-it is the same as on Binder: the workshop browser lists the workshops
-in order, and the trust dialog is removed, since the codespace is a
-container of your own. `setup.sh` installs the same settings override
-as `binder/postBuild`, naming `.devcontainer/welcome.md` as the
-message shown when JupyterLab starts.
+the workshop browser lists the workshops in order, as on Binder, and
+`setup.sh` installs the same settings override as `binder/postBuild`
+with two differences: it names `.devcontainer/welcome.md` as the
+message shown when JupyterLab starts, and it does not mark the
+workshops as trusted.
+
+On Binder the trust dialog is removed, because the session is an
+anonymous container that is thrown away when you are done. A codespace
+is yours, tied to your GitHub account, so opening a workshop shows the
+trust dialog: what the workshop will do, and how far to trust it.
+Choose Trust to let its actions run as intended; Restricted types
+commands without running them and asks before changing files or
+running code. You are asked once for each workshop, and again only if
+it changes. `.devcontainer/start.sh` also starts JupyterLab without the
+codespace's GitHub credentials: the `GITHUB_TOKEN` variable is removed
+from its environment and git is given no credential helper, so nothing
+a workshop runs, the packages it installs included, is handed a token
+for your account. That narrows what workshop code can reach; it does
+not sandbox it.
 
 JupyterLab in the codespace asks for no token, because the forwarded
 port is private: only you, signed in to GitHub, can reach it. Leave the
@@ -228,7 +242,7 @@ binder/
 .devcontainer/
   devcontainer.json      the GitHub Codespaces container: image, setup and start, ports
   setup.sh               installs from binder/requirements.txt, writes the settings override
-  start.sh               starts JupyterLab in the background on port 8888
+  start.sh               starts JupyterLab on port 8888, without GitHub credentials
   welcome.md             the message shown when JupyterLab starts in a codespace
 jupyter_lab_config.py    opens a local JupyterLab on the collection, so the workshops
                          are listed in order; pass it with `--config`
