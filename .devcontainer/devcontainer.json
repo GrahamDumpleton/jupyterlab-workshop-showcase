@@ -1,0 +1,23 @@
+// Dev container for GitHub Codespaces: the same JupyterLab and pinned
+// extension as the Binder image (binder/requirements.txt), started in the
+// background once the codespace is up and opened in its own browser tab
+// when its port is forwarded. Codespaces always opens VS Code in the
+// browser first, so the welcome file is opened there too, to say where
+// JupyterLab went if the tab was blocked.
+{
+  "name": "jupyterlab-workshop showcase",
+  "image": "mcr.microsoft.com/devcontainers/python:3.14",
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "postStartCommand": "bash .devcontainer/start.sh",
+  "portsAttributes": {
+    "8888": {
+      "label": "JupyterLab",
+      "onAutoForward": "openBrowserOnce"
+    }
+  },
+  "customizations": {
+    "codespaces": {
+      "openFiles": [".devcontainer/welcome.md"]
+    }
+  }
+}
