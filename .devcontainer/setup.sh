@@ -11,10 +11,12 @@ cd "$(dirname "$0")/.."
 
 python -m pip install --no-cache-dir -r binder/requirements.txt
 
-# The overrides live in the application settings directory under the
-# Python prefix. pip has just written to that prefix, so it is normally
-# writable; sudo covers an image where it is not.
-settings="$(python -c 'import sys; print(sys.prefix)')/share/jupyter/lab/settings"
+# The overrides live in JupyterLab's application settings directory. Ask
+# JupyterLab for it rather than assuming the Python prefix: it moves to
+# the user's home for a user-level install, which pip falls back to when
+# the prefix is not writable, and to /usr/local/share for some system
+# installs. sudo covers a directory this user cannot write.
+settings="$(python -c 'import os; from jupyterlab.commands import get_app_dir; print(os.path.join(get_app_dir(), "settings"))')"
 
 overrides="$(mktemp)"
 
@@ -47,3 +49,5 @@ else
 fi
 
 rm -f "$overrides"
+
+echo "Wrote the JupyterLab overrides to $settings/overrides.json"
