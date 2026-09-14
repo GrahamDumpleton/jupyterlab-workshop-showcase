@@ -1,9 +1,12 @@
 // Dev container for GitHub Codespaces: the same JupyterLab and pinned
 // extension as the Binder image (binder/requirements.txt), started in the
-// background once the codespace is up and opened in its own browser tab
-// when its port is forwarded. Codespaces always opens VS Code in the
-// browser first, so the welcome file is opened there too, to say where
-// JupyterLab went if the tab was blocked.
+// background once the codespace is up. Codespaces always opens VS Code in
+// the browser first, and when JupyterLab's port is forwarded VS Code shows
+// a notification with a button that opens it in a new tab. The port does
+// not open the tab by itself: browsers block a tab nobody clicked for, and
+// Safari can only allow pop-ups per host name, which changes with every
+// codespace. The welcome file is opened in VS Code to explain where to
+// click.
 {
   "name": "jupyterlab-workshop showcase",
   "image": "mcr.microsoft.com/devcontainers/python:3.14",
@@ -12,7 +15,7 @@
   "portsAttributes": {
     "8888": {
       "label": "JupyterLab",
-      "onAutoForward": "openBrowserOnce"
+      "onAutoForward": "notify"
     }
   },
   "customizations": {

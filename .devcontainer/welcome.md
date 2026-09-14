@@ -5,11 +5,13 @@ you would use it rather than a notebook with the instructions written
 in it. The workshop browser lists them in the order to take them; open
 the first, and the Finish dialog at the end of each offers the next.
 
-This session runs in a GitHub codespace. JupyterLab opens in its own
-browser tab once it has started, which takes a minute or so the first
-time. If the tab did not open, perhaps because the browser blocked it,
-open the Ports panel in the VS Code tab and open the address for the
-port labelled JupyterLab.
+This session runs in a GitHub codespace, which opens in VS Code in the
+browser. JupyterLab starts in the background, which takes a minute or
+so the first time, and VS Code then shows a notification that the
+application on port 8888 is available. Click its Open in Browser button
+to open JupyterLab in a new tab. If the notification has gone, open the
+Ports panel in VS Code and open the address of the port labelled
+JupyterLab.
 
 Leave that port's visibility as Private. JupyterLab here asks for no
 password or token, because a private port can only be reached by you,

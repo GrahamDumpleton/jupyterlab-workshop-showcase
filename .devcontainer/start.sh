@@ -4,11 +4,12 @@
 # workshops, collection.json and the welcome file resolve as they do on
 # Binder. Output goes to /tmp/jupyterlab.log.
 #
-# Token authentication is off so the tab Codespaces opens on forwarding
-# the port goes straight into JupyterLab. That relies on the forwarded
-# port staying private, the default, which only the codespace's owner,
-# signed in to GitHub, can reach. The welcome file tells the learner not
-# to make it public. Remote access is allowed because requests arrive
+# Token authentication is off so opening the forwarded port, from VS
+# Code's notification or its Ports panel, goes straight into JupyterLab
+# with no token to copy. That relies on the forwarded port staying
+# private, the default, which only the codespace's owner, signed in to
+# GitHub, can reach. The welcome file tells the learner not to make it
+# public. Remote access is allowed because requests arrive
 # with the forwarded github.dev host name rather than localhost.
 #
 # JupyterLab is run through python -m so nothing depends on where pip put
