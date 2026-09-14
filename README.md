@@ -1,17 +1,22 @@
 # jupyterlab-workshop showcase
 
 [![Launch on Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/GrahamDumpleton/jupyterlab-workshop-showcase/main?urlpath=lab)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/GrahamDumpleton/jupyterlab-workshop-showcase?quickstart=1)
 
-Nothing to install: [start the workshops on mybinder.org](https://mybinder.org/v2/gh/GrahamDumpleton/jupyterlab-workshop-showcase/main?urlpath=lab)
-in your browser (see [Launch on Binder](#launch-on-binder) below), or
+Nothing to install: start the workshops in your browser, on
+[mybinder.org](https://mybinder.org/v2/gh/GrahamDumpleton/jupyterlab-workshop-showcase/main?urlpath=lab)
+with no account needed, or in
+[GitHub Codespaces](https://codespaces.new/GrahamDumpleton/jupyterlab-workshop-showcase?quickstart=1)
+with a GitHub account (see [Launch on Binder](#launch-on-binder) and
+[Launch on Codespaces](#launch-on-codespaces) below). Or
 [run them locally](#run-locally).
 
 Three short workshops that show what
 [jupyterlab-workshop](https://github.com/GrahamDumpleton/jupyterlab-workshop)
 does, and why you would use it rather than a notebook with the
 instructions written in it. The repository is also a working collection
-of workshops: its layout, index, Binder files and CI workflow are the
-pattern to copy for a collection of your own.
+of workshops: its layout, index, Binder and Codespaces files and CI
+workflow are the pattern to copy for a collection of your own.
 
 jupyterlab-workshop is a JupyterLab extension that shows workshop
 instructions in a side panel, with clickable actions that drive the
@@ -84,6 +89,48 @@ shut it down rather than closing the browser tab, so the resources go
 back to Binder for other users. The Finish dialog at the end of a
 workshop has a button for this, and so does JupyterLab's File menu,
 under "Shut Down".
+
+## Launch on Codespaces
+
+[GitHub Codespaces](https://github.com/features/codespaces) builds this
+repository into a container of your own in the cloud and opens it in VS
+Code in the browser. It needs a GitHub account, and the codespace uses
+your account's Codespaces allowance: personal accounts get a monthly
+amount of use at no cost, beyond which GitHub charges for it or stops
+it. Unlike a Binder session, a codespace is kept until you delete it.
+To start, click this link:
+
+**[Launch the workshops on Codespaces](https://codespaces.new/GrahamDumpleton/jupyterlab-workshop-showcase?quickstart=1)**
+
+The Codespaces badge at the top of this page opens the same link. If
+you already have a codespace for this repository, the link offers to
+resume it rather than create another.
+
+Creating the codespace takes a few minutes. VS Code opens first, with
+`.devcontainer/welcome.md` open in it, while `.devcontainer/setup.sh`
+installs JupyterLab and the extension from `binder/requirements.txt`
+and `.devcontainer/start.sh` starts JupyterLab in the background. When
+JupyterLab is ready, VS Code shows a notification that the application
+on port 8888 is available: click Open in Browser to open JupyterLab in
+a new tab. If the notification has gone, open the address of the port
+labelled JupyterLab from VS Code's Ports panel. The tab is not opened
+by itself, because browsers block a tab nobody clicked for. From there
+it is the same as on Binder: the workshop browser lists the workshops
+in order, and the trust dialog is removed, since the codespace is a
+container of your own. `setup.sh` installs the same settings override
+as `binder/postBuild`, naming `.devcontainer/welcome.md` as the
+message shown when JupyterLab starts.
+
+JupyterLab in the codespace asks for no token, because the forwarded
+port is private: only you, signed in to GitHub, can reach it. Leave the
+port's visibility as Private. Made public, it would let anyone with its
+address run commands in your codespace.
+
+A codespace stops by itself after a period of inactivity and keeps your
+work, and starting it again from
+[github.com/codespaces](https://github.com/codespaces) starts JupyterLab
+again with it. A stopped codespace still uses your storage allowance,
+so delete it there when you have finished with the workshops.
 
 ## Run locally
 
@@ -178,6 +225,11 @@ binder/
   runtime.txt            the Python version for the Binder image
   postBuild              writes the settings override described above
   welcome.md             the message shown when a Binder session starts
+.devcontainer/
+  devcontainer.json      the GitHub Codespaces container: image, setup and start, ports
+  setup.sh               installs from binder/requirements.txt, writes the settings override
+  start.sh               starts JupyterLab in the background on port 8888
+  welcome.md             the message shown when JupyterLab starts in a codespace
 jupyter_lab_config.py    opens a local JupyterLab on the collection, so the workshops
                          are listed in order; pass it with `--config`
 .github/workflows/
@@ -219,10 +271,13 @@ jupyter workshop test workshops/why-a-workshop
 
 The workflow in `.github/workflows/test.yml` runs both for every
 workshop on Linux and Windows, installing the release named in
-`binder/requirements.txt`, so CI tests exactly what Binder serves.
+`binder/requirements.txt`, so CI tests exactly what Binder and
+Codespaces serve.
 
 ## Updating the release
 
 The extension version is pinned once, in `binder/requirements.txt`.
 Bump it there when a new release is out; Binder builds a fresh image
-for the new commit, and CI tests the workshops against the new release.
+for the new commit, a codespace created after it installs the new
+release (an existing codespace keeps the one it was created with), and
+CI tests the workshops against the new release.
