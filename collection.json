@@ -1,5 +1,6 @@
 {
   "version": 1,
+  "id": "grahamdumpleton.me/jupyterlab-workshop-showcase",
   "title": "jupyterlab-workshop showcase",
   "description": "Three short workshops that show what jupyterlab-workshop does and why you would use it rather than a notebook with instructions in it: why a workshop, checks and gating, and writing your own.",
   "homepage": "https://github.com/GrahamDumpleton/jupyterlab-workshop-showcase",
