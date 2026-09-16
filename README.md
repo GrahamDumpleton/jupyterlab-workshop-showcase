@@ -72,7 +72,14 @@ machine. The `binder/postBuild` script installs a settings override
 that marks the checkout's workshops as trusted, turns off editing,
 subscribes to the checkout's own `collection.json`, and names
 `binder/welcome.md` as the message shown when the session starts,
-which says what the workshops are and how to end the session.
+which says what the workshops are and how to end the session. The same
+override names the showcase's own analytics service as the sink for
+progress events, so every session reports which pages, actions and
+checks happened and when, and it can be seen where the workshops are
+clear and where they are not. Sessions are anonymous and the events
+never carry file contents, command output or form answers; the welcome
+message says that progress is reported. The token in the script is as
+public as the script and only routes events to the showcase.
 
 A link can open one workshop directly, by naming its directory in the
 checkout in the `urlpath`, URL-encoded: this one opens the first
@@ -116,8 +123,9 @@ a new tab. If the notification has gone, open the address of the port
 labelled JupyterLab from VS Code's Ports panel. The tab is not opened
 by itself, because browsers block a tab nobody clicked for. From there
 the workshop browser lists the workshops in order, as on Binder, and
-`setup.sh` installs the same settings override as `binder/postBuild`
-with two differences: it names `.devcontainer/welcome.md` as the
+`setup.sh` installs the same settings override as `binder/postBuild`,
+reporting progress to the same analytics service under a token of its
+own, with two differences: it names `.devcontainer/welcome.md` as the
 message shown when JupyterLab starts, and it does not mark the
 workshops as trusted.
 
