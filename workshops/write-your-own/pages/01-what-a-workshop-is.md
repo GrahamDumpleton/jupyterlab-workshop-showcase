@@ -34,6 +34,13 @@ Install it into the same environment JupyterLab runs from, then restart
 the terminal.
 ```
 
+```{when} "node" in missing_tools
+Node.js was not found on this machine. The `jupyter workshop lint` and
+`test` commands on the later pages need Node.js 18 or newer, so install
+it from [nodejs.org](https://nodejs.org) or with your package manager
+before you get there, and reload JupyterLab afterwards.
+```
+
 Pages can end with a question. This workshop uses soft gating, so the
 footer lists what is not yet done but Next still works; the previous
 workshop in this collection showed the strict kind.
