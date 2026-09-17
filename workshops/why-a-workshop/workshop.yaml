@@ -16,15 +16,14 @@ platforms: [linux, macos, windows]
 capabilities:
   - terminal
   - write-files
-layout: notebook
+instructions: { side: right, width: 0.3 }
 gating: soft
 layouts:
   workbench:
-    left: collapsed
-    right: { widget: instructions, size: 0.3 }
     main:
-      - { area: top, widgets: ["file:project/hello.txt"] }
-      - { area: bottom, widgets: ["terminal:demo"], size: 0.4 }
+      areas:
+        - { tabs: ["file:project/hello.txt"] }
+        - { size: 0.4, tabs: ["terminal:demo"] }
 variables:
   - name: learner
     type: text
