@@ -15,7 +15,7 @@ duration: 20m
 platforms: [linux, macos, windows]
 capabilities:
   - terminal
-  - write-files: [workspace]
+  - write-files
   - kernel-exec
 requires:
   tools:

@@ -29,7 +29,7 @@
       ],
       "capabilities": [
         "terminal",
-        "write-files:workspace"
+        "write-files"
       ],
       "duration": "10m",
       "authors": [
@@ -46,7 +46,8 @@
         }
       ],
       "homepage": "https://github.com/GrahamDumpleton/jupyterlab-workshop-showcase",
-      "issues": "https://github.com/GrahamDumpleton/jupyterlab-workshop-showcase/issues"
+      "issues": "https://github.com/GrahamDumpleton/jupyterlab-workshop-showcase/issues",
+      "frontends": []
     },
     {
       "name": "guided-not-documented",
@@ -64,7 +65,7 @@
       ],
       "capabilities": [
         "terminal",
-        "write-files:workspace",
+        "write-files",
         "kernel-exec",
         "auto-run"
       ],
@@ -83,7 +84,8 @@
         }
       ],
       "homepage": "https://github.com/GrahamDumpleton/jupyterlab-workshop-showcase",
-      "issues": "https://github.com/GrahamDumpleton/jupyterlab-workshop-showcase/issues"
+      "issues": "https://github.com/GrahamDumpleton/jupyterlab-workshop-showcase/issues",
+      "frontends": []
     },
     {
       "name": "write-your-own",
@@ -101,7 +103,7 @@
       ],
       "capabilities": [
         "terminal",
-        "write-files:workspace",
+        "write-files",
         "kernel-exec"
       ],
       "duration": "20m",
@@ -119,7 +121,8 @@
         }
       ],
       "homepage": "https://github.com/GrahamDumpleton/jupyterlab-workshop-showcase",
-      "issues": "https://github.com/GrahamDumpleton/jupyterlab-workshop-showcase/issues"
+      "issues": "https://github.com/GrahamDumpleton/jupyterlab-workshop-showcase/issues",
+      "frontends": []
     }
   ]
 }

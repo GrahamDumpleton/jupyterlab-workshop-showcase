@@ -15,7 +15,7 @@ duration: 15m
 platforms: [linux, macos, windows]
 capabilities:
   - terminal
-  - write-files: [workspace]
+  - write-files
   - kernel-exec
   - auto-run
 layout: default
