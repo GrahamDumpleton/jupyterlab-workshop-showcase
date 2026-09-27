@@ -19,15 +19,13 @@ signed in to GitHub. Making the port public, or visible to an
 organization, would let anyone who has its address run commands in
 your codespace.
 
-The showcase has an analytics service of its own, and the trust dialog
-offers to report your progress to it: which pages you visited, which
+As you work through a workshop, its progress is reported to the
+showcase's own analytics service: which pages you visited, which
 actions you clicked and what the checks found, and when. That is how
 it can be seen where the workshops are clear and where they are not.
-The box is off unless you tick it, and nothing is sent while it is
-off. Nothing in what is reported identifies you or your codespace.
-Nothing you type is sent, nor the files you make, the output of
-commands, or the answers you give to forms, only which step happened
-and when.
+Nothing in what is reported identifies you or your codespace. Nothing
+you type is sent, nor the files you make, the output of commands, or
+the answers you give to forms, only which step happened and when.
 
 When you open a workshop, JupyterLab shows what it will do in this
 codespace, such as run commands in terminals, write files and run code,

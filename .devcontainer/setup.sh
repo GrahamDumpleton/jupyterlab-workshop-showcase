@@ -7,14 +7,13 @@
 # is an anonymous, temporary container. The welcome message is the
 # Codespaces one. And workshops are not forced to trusted, so the learner
 # is shown what a workshop asks to do and decides before it runs anything
-# in their codespace. Progress is not reported without asking either:
-# the analytics setting leaves the sink the collection.json analytics
-# block names to the trust dialog, which offers reporting to it as a
-# checkbox, off unless the learner ticks it, since the codespace is
-# theirs. The second block is JupyterLab's own: it turns off the
-# question about fetching Jupyter news, which would otherwise come
-# before the welcome message the first time the codespace's JupyterLab
-# opens.
+# in their codespace. The analytics setting is Binder's: it reports
+# every session's progress events to the sink the collection.json
+# analytics block names, without asking, and the welcome message says
+# so; the events say they came from a codespace. The second block is
+# JupyterLab's own: it turns off the question about fetching Jupyter
+# news, which would otherwise come before the welcome message the
+# first time the codespace's JupyterLab opens.
 set -euo pipefail
 
 cd "$(dirname "$0")/.."
@@ -46,7 +45,7 @@ cat > "$overrides" <<'JSON'
       "remove",
       "author"
     ],
-    "analytics": { "report": "ask" }
+    "analytics": { "report": "always" }
   },
   "@jupyterlab/apputils-extension:notification": {
     "fetchNews": "false"

@@ -126,11 +126,10 @@ labelled JupyterLab from VS Code's Ports panel. The tab is not opened
 by itself, because browsers block a tab nobody clicked for. From there
 the workshop browser lists the workshops in order, as on Binder, and
 `setup.sh` installs the same settings override as `binder/postBuild`,
-with three differences: it names `.devcontainer/welcome.md` as the
-message shown when JupyterLab starts, it does not mark the workshops
-as trusted, and it does not turn reporting on, so the trust dialog
-offers reporting to the collection's sink as a checkbox that is off
-unless ticked.
+reporting progress to the collection's sink without asking as Binder
+does, with two differences: it names `.devcontainer/welcome.md` as the
+message shown when JupyterLab starts, and it does not mark the
+workshops as trusted.
 
 On Binder the trust dialog is removed, because the session is an
 anonymous container that is thrown away when you are done. A codespace
