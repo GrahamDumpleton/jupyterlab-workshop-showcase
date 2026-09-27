@@ -13,6 +13,10 @@
     "showcase"
   ],
   "ordered": true,
+  "analytics": {
+    "sink": "https://workshop-analytics.grumpys.work/events",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3OWQxYzc2YzgyYWI0NzE4OTJiMzJmMDRhOTkyNzczMSIsInN1YiI6InNob3djYXNlLXdvcmtzaG9wcyIsInNjb3BlIjpbImluZ2VzdCJdLCJsYWJlbHMiOnt9LCJvcmlnaW5zIjpbImh0dHBzOi8vZ3JhaGFtZHVtcGxldG9uLmdpdGh1Yi5pbyJdLCJpYXQiOjE3OTA1MDE5MzIsIm5iZiI6MTc5MDUwMTkzMiwiZXhwIjoxODIxNTcxMTk5fQ.kRNB_VOVyI_oqjmjaeH5wuSwUUZ8vhlUOSCJwiM9Y88"
+  },
   "workshops": [
     {
       "name": "why-a-workshop",

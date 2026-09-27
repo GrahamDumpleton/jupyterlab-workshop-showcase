@@ -7,13 +7,14 @@
 # is an anonymous, temporary container. The welcome message is the
 # Codespaces one. And workshops are not forced to trusted, so the learner
 # is shown what a workshop asks to do and decides before it runs anything
-# in their codespace. The analytics block is the same as Binder's but
-# carries a token of its own, so the service tells the two apart and
-# either can be revoked alone; it is as public as this file and only
-# routes anonymous progress events to the showcase's service. The
-# second block is JupyterLab's own: it turns off the question about
-# fetching Jupyter news, which would otherwise come before the welcome
-# message the first time the codespace's JupyterLab opens.
+# in their codespace. Progress is not reported without asking either:
+# the analytics setting leaves the sink the collection.json analytics
+# block names to the trust dialog, which offers reporting to it as a
+# checkbox, off unless the learner ticks it, since the codespace is
+# theirs. The second block is JupyterLab's own: it turns off the
+# question about fetching Jupyter news, which would otherwise come
+# before the welcome message the first time the codespace's JupyterLab
+# opens.
 set -euo pipefail
 
 cd "$(dirname "$0")/.."
@@ -45,10 +46,7 @@ cat > "$overrides" <<'JSON'
       "remove",
       "author"
     ],
-    "analytics": {
-      "sink": "https://workshop-analytics.grumpys.work/events",
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5Zjk1ZDIwMjVmYzE0MTQ0OWVjMjQ2ZTlhZDBhNjg1MCIsInN1YiI6InNob3djYXNlLWNvZGVzcGFjZXMiLCJzY29wZSI6WyJpbmdlc3QiXSwibGFiZWxzIjp7ImRlcGxveW1lbnQiOiJzaG93Y2FzZS1jb2Rlc3BhY2VzIn0sIm9yaWdpbnMiOltdLCJpYXQiOjE3ODk1MjgyMzQsIm5iZiI6MTc4OTUyODIzNCwiZXhwIjoxODIxMTM5MTk5fQ.CmkloE94utpWE0s41vQlWieNU8keiMxGnI_x8VIFuW4"
-    }
+    "analytics": { "report": "ask" }
   },
   "@jupyterlab/apputils-extension:notification": {
     "fetchNews": "false"

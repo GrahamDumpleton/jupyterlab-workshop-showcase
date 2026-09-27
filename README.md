@@ -9,7 +9,8 @@ with no account needed, or in
 [GitHub Codespaces](https://codespaces.new/GrahamDumpleton/jupyterlab-workshop-showcase?quickstart=1)
 with a GitHub account (see [Launch on Binder](#launch-on-binder) and
 [Launch on Codespaces](#launch-on-codespaces) below). Or
-[run them locally](#run-locally).
+[run them locally](#run-locally), or [in a container](#run-in-a-container)
+with nothing installed but Docker.
 
 Three short workshops that show what
 [jupyterlab-workshop](https://github.com/GrahamDumpleton/jupyterlab-workshop)
@@ -73,13 +74,14 @@ that marks the checkout's workshops as trusted, turns off editing,
 subscribes to the checkout's own `collection.json`, and names
 `binder/welcome.md` as the message shown when the session starts,
 which says what the workshops are and how to end the session. The same
-override names the showcase's own analytics service as the sink for
-progress events, so every session reports which pages, actions and
-checks happened and when, and it can be seen where the workshops are
-clear and where they are not. Sessions are anonymous and the events
-never carry file contents, command output or form answers; the welcome
-message says that progress is reported. The token in the script is as
-public as the script and only routes events to the showcase.
+override turns on reporting to the showcase's own analytics service,
+which `collection.json` names as the collection's sink, so every
+session reports which pages, actions and checks happened and when, and
+it can be seen where the workshops are clear and where they are not.
+Sessions are anonymous and the events never carry file contents,
+command output or form answers; the welcome message says that progress
+is reported. The token in the index is as public as the index and only
+routes events to the showcase.
 
 A link can open one workshop directly, by naming its directory in the
 checkout in the `urlpath`, URL-encoded: this one opens the first
@@ -124,10 +126,11 @@ labelled JupyterLab from VS Code's Ports panel. The tab is not opened
 by itself, because browsers block a tab nobody clicked for. From there
 the workshop browser lists the workshops in order, as on Binder, and
 `setup.sh` installs the same settings override as `binder/postBuild`,
-reporting progress to the same analytics service under a token of its
-own, with two differences: it names `.devcontainer/welcome.md` as the
-message shown when JupyterLab starts, and it does not mark the
-workshops as trusted.
+with three differences: it names `.devcontainer/welcome.md` as the
+message shown when JupyterLab starts, it does not mark the workshops
+as trusted, and it does not turn reporting on, so the trust dialog
+offers reporting to the collection's sink as a checkbox that is off
+unless ticked.
 
 On Binder the trust dialog is removed, because the session is an
 anonymous container that is thrown away when you are done. A codespace
@@ -213,6 +216,44 @@ or go straight to one with
 Binder the trust dialog appears when a workshop opens; it lists what
 the workshop's pages are allowed to do; `--trust trusted` on the
 launch command skips it.
+
+## Run in a container
+
+Every jupyterlab-workshop release is published as a container image,
+with JupyterLab and the extension ready and no workshops inside. Run it
+with this collection's index and it installs the three workshops,
+starts JupyterLab and prints the link to open:
+
+```
+docker run --rm -p 8888:8888 \
+    -e WORKSHOP_COLLECTION=https://raw.githubusercontent.com/GrahamDumpleton/jupyterlab-workshop-showcase/main/collection.json \
+    -e WORKSHOP_INSTALL=1 \
+    ghcr.io/grahamdumpleton/jupyterlab-workshop:0.13.0
+```
+
+The link, `http://127.0.0.1:8888/lab?token=…`, appears in the
+container's output once the server is up. It opens the workshop browser
+with the workshops listed under Installed, numbered in the order to
+take them, and trusted, since whoever ran the image chose them; the
+image needs the network to fetch them at start, and nothing after that
+except what a workshop itself downloads. Podman runs the same command.
+Name a workshop to open it straight away instead of the browser,
+`-e WORKSHOP_WORKSHOP=why-a-workshop`, and pass a fixed token with
+`-e JUPYTER_TOKEN=…` so the link is the same every start.
+
+The workshops and everything you make in them live in the container's
+home directory, `/home/jovyan`, and go when the container does. To keep
+them, mount a volume there: `-v showcase:/home/jovyan`. The next run
+finds the workshops already installed, so it starts without the
+network, and finds your files and your progress where you left them.
+
+The trust dialog is not shown in the container, so the checkbox that
+would offer reporting your progress to the showcase's analytics service
+is never seen, and nothing is reported. Add `-e WORKSHOP_ANALYTICS=always`
+to report without asking, as the Binder image does. The image, its
+variables and how a collection can build an image of its own with the
+workshops already inside are described in [the
+documentation](https://jupyterlab-workshop.readthedocs.io/en/latest/deploying.html#a-container-image).
 
 ## Subscribe from your own JupyterLab
 
