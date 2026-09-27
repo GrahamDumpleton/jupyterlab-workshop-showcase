@@ -8,9 +8,9 @@ Nothing to install: start the workshops in your browser, on
 with no account needed, or in
 [GitHub Codespaces](https://codespaces.new/GrahamDumpleton/jupyterlab-workshop-showcase?quickstart=1)
 with a GitHub account (see [Launch on Binder](#launch-on-binder) and
-[Launch on Codespaces](#launch-on-codespaces) below). Or
-[run them locally](#run-locally), or [in a container](#run-in-a-container)
-with nothing installed but Docker.
+[Launch on Codespaces](#launch-on-codespaces) below). Or run them
+[in a container](#run-in-a-container) with nothing installed but
+Docker, or [locally](#run-locally).
 
 Three short workshops that show what
 [jupyterlab-workshop](https://github.com/GrahamDumpleton/jupyterlab-workshop)
@@ -156,6 +156,48 @@ work, and starting it again from
 again with it. A stopped codespace still uses your storage allowance,
 so delete it there when you have finished with the workshops.
 
+## Run in a container
+
+Every jupyterlab-workshop release is published as a container image,
+with JupyterLab and the extension ready and no workshops inside. Run it
+with this collection's index and it installs the three workshops,
+starts JupyterLab and prints the link to open:
+
+```
+docker run --rm -p 8888:8888 \
+    -e WORKSHOP_COLLECTION=https://raw.githubusercontent.com/GrahamDumpleton/jupyterlab-workshop-showcase/main/collection.json \
+    -e WORKSHOP_INSTALL=1 \
+    -e WORKSHOP_ANALYTICS=always \
+    ghcr.io/grahamdumpleton/jupyterlab-workshop:0.13.0
+```
+
+The link, `http://127.0.0.1:8888/lab?token=…`, appears in the
+container's output once the server is up. It opens the workshop browser
+with the workshops listed under Installed, numbered in the order to
+take them, and trusted, since whoever ran the image chose them; the
+image needs the network to fetch them at start, and nothing after that
+except what a workshop itself downloads. Podman runs the same command.
+Name a workshop to open it straight away instead of the browser,
+`-e WORKSHOP_WORKSHOP=why-a-workshop`, and pass a fixed token with
+`-e JUPYTER_TOKEN=…` so the link is the same every start.
+
+The workshops and everything you make in them live in the container's
+home directory, `/home/jovyan`, and go when the container does. To keep
+them, mount a volume there: `-v showcase:/home/jovyan`. The next run
+finds the workshops already installed, so it starts without the
+network, and finds your files and your progress where you left them.
+
+`WORKSHOP_ANALYTICS=always` reports your progress to the showcase's
+own analytics service as Binder and Codespaces do, which pages you
+visited, which actions you clicked and what the checks found, and when,
+with nothing that identifies you and none of what you type or make.
+The trust dialog is not shown in the container, so leaving the
+variable out means nothing is reported: the checkbox that would offer
+it is never seen. The image, its variables and how a collection can
+build an image of its own with the workshops already inside are
+described in [the
+documentation](https://jupyterlab-workshop.readthedocs.io/en/latest/deploying.html#a-container-image).
+
 ## Run locally
 
 You need Python 3.12 or later and, for the shortest routes,
@@ -215,48 +257,6 @@ or go straight to one with
 Binder the trust dialog appears when a workshop opens; it lists what
 the workshop's pages are allowed to do; `--trust trusted` on the
 launch command skips it.
-
-## Run in a container
-
-Every jupyterlab-workshop release is published as a container image,
-with JupyterLab and the extension ready and no workshops inside. Run it
-with this collection's index and it installs the three workshops,
-starts JupyterLab and prints the link to open:
-
-```
-docker run --rm -p 8888:8888 \
-    -e WORKSHOP_COLLECTION=https://raw.githubusercontent.com/GrahamDumpleton/jupyterlab-workshop-showcase/main/collection.json \
-    -e WORKSHOP_INSTALL=1 \
-    -e WORKSHOP_ANALYTICS=always \
-    ghcr.io/grahamdumpleton/jupyterlab-workshop:0.13.0
-```
-
-The link, `http://127.0.0.1:8888/lab?token=…`, appears in the
-container's output once the server is up. It opens the workshop browser
-with the workshops listed under Installed, numbered in the order to
-take them, and trusted, since whoever ran the image chose them; the
-image needs the network to fetch them at start, and nothing after that
-except what a workshop itself downloads. Podman runs the same command.
-Name a workshop to open it straight away instead of the browser,
-`-e WORKSHOP_WORKSHOP=why-a-workshop`, and pass a fixed token with
-`-e JUPYTER_TOKEN=…` so the link is the same every start.
-
-The workshops and everything you make in them live in the container's
-home directory, `/home/jovyan`, and go when the container does. To keep
-them, mount a volume there: `-v showcase:/home/jovyan`. The next run
-finds the workshops already installed, so it starts without the
-network, and finds your files and your progress where you left them.
-
-`WORKSHOP_ANALYTICS=always` reports your progress to the showcase's
-own analytics service as Binder and Codespaces do, which pages you
-visited, which actions you clicked and what the checks found, and when,
-with nothing that identifies you and none of what you type or make.
-The trust dialog is not shown in the container, so leaving the
-variable out means nothing is reported: the checkbox that would offer
-it is never seen. The image, its variables and how a collection can
-build an image of its own with the workshops already inside are
-described in [the
-documentation](https://jupyterlab-workshop.readthedocs.io/en/latest/deploying.html#a-container-image).
 
 ## Subscribe from your own JupyterLab
 
