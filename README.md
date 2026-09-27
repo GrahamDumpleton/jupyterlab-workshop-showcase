@@ -227,6 +227,7 @@ starts JupyterLab and prints the link to open:
 docker run --rm -p 8888:8888 \
     -e WORKSHOP_COLLECTION=https://raw.githubusercontent.com/GrahamDumpleton/jupyterlab-workshop-showcase/main/collection.json \
     -e WORKSHOP_INSTALL=1 \
+    -e WORKSHOP_ANALYTICS=always \
     ghcr.io/grahamdumpleton/jupyterlab-workshop:0.13.0
 ```
 
@@ -246,12 +247,15 @@ them, mount a volume there: `-v showcase:/home/jovyan`. The next run
 finds the workshops already installed, so it starts without the
 network, and finds your files and your progress where you left them.
 
-The trust dialog is not shown in the container, so the checkbox that
-would offer reporting your progress to the showcase's analytics service
-is never seen, and nothing is reported. Add `-e WORKSHOP_ANALYTICS=always`
-to report without asking, as the Binder image does. The image, its
-variables and how a collection can build an image of its own with the
-workshops already inside are described in [the
+`WORKSHOP_ANALYTICS=always` reports your progress to the showcase's
+own analytics service as Binder and Codespaces do, which pages you
+visited, which actions you clicked and what the checks found, and when,
+with nothing that identifies you and none of what you type or make.
+The trust dialog is not shown in the container, so leaving the
+variable out means nothing is reported: the checkbox that would offer
+it is never seen. The image, its variables and how a collection can
+build an image of its own with the workshops already inside are
+described in [the
 documentation](https://jupyterlab-workshop.readthedocs.io/en/latest/deploying.html#a-container-image).
 
 ## Subscribe from your own JupyterLab
